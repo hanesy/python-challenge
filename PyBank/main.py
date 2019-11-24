@@ -28,9 +28,9 @@ with open (pybankpath, newline='') as analysisfile:
 
     filereader = csv.reader(analysisfile, delimiter = ',')
     file_header = next (filereader)
-    
     #check if header is loaded
     #print(f"headers: {file_header}")
+    
     for row in filereader:
         #check if rows are loaded
         #print(row)
