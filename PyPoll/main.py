@@ -128,6 +128,7 @@ with open(output_path, 'w', newline='') as csvfile:
     csvwriter.writerow([" -------------------------"])
     csvwriter.writerows(results)
     csvwriter.writerow([" -------------------------"])
+    csvwriter.writerow([" Winner", winner])
     
 # ## Hints and Considerations
 
