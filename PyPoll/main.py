@@ -116,15 +116,19 @@ print (f"""----------------------------
 
 results = zip (candidate_list, candidate_percent, candidate_votes)
 
-output_path = os.path.join("pypoll_output.csv")
+output_path = os.path.join("pypoll_output.txt")
 with open(output_path, 'w', newline='') as csvfile:
     # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter=',')
-    csvwriter.writerow(["Election REsults"])
+    csvwriter.writerow(["Election Results"])
+    csvwriter.writerow([" -------------------------"])
     csvwriter.writerow(["Total Votes", total_votes])
+    csvwriter.writerow([" -------------------------"])
     csvwriter.writerow(["Candidate", "Percent Votes", "Total Votes"])
+    csvwriter.writerow([" -------------------------"])
     csvwriter.writerows(results)
-
+    csvwriter.writerow([" -------------------------"])
+    
 # ## Hints and Considerations
 
 # * Consider what we've learned so far. To date, we've learned how to import modules like `csv`; 

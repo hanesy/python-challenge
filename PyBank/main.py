@@ -109,18 +109,19 @@ Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})
 # * In addition, your final script should both print the analysis to the terminal and export a text file with the results.
 
 
-output_path = os.path.join("pybank_output.csv")
+output_path = os.path.join("pybank_output.txt")
 with open(output_path, 'w', newline='') as csvfile:
     # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter=',')
 
     # Write the first row 
-    csvwriter.writerow(['Financial Analysis', 'Month Info', 'Fin Info'])
-    csvwriter.writerow(['Total Months', num_months])
-    csvwriter.writerow(['Total','', net_total])
-    csvwriter.writerow(['Average Change','', average_change])
-    csvwriter.writerow(['Greatest Increase in Profits', increase_month, greatest_increase])
-    csvwriter.writerow(['Greatest Decrease in Profits', decrease_month, greatest_decrease])
+    csvwriter.writerow(['Financial Analysis'])
+    csvwriter.writerow('----------------------------')
+    csvwriter.writerow(['Total Months: ', num_months])
+    csvwriter.writerow(['Total: ', net_total])
+    csvwriter.writerow(['Average Change: ', average_change])
+    csvwriter.writerow(['Greatest Increase in Profits: ', increase_month, greatest_increase])
+    csvwriter.writerow(['Greatest Decrease in Profits: ', decrease_month, greatest_decrease])
 
 
 # ## Hints and Considerations
