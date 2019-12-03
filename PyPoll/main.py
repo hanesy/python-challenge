@@ -54,7 +54,7 @@ with open (pypollpath, newline='') as analysisfile:
 #   * The total number of votes cast
 total_votes = len (voter_id)
 
-#   * A complete list of candidates who received votes
+#   * A complete list of unique candidates who received votes
 candidate_list = []
 i = 0
 for name in voted_for:
