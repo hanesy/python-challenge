@@ -110,7 +110,7 @@ with open(output_path, 'w', newline='') as csvfile:
 
     # Write the first row 
     csvwriter.writerow(['Financial Analysis'])
-    csvwriter.writerow('----------------------------')
+    csvwriter.writerow(['----------------------------'])
     csvwriter.writerow(['Total Months: ', num_months])
     csvwriter.writerow(['Total: ', net_total])
     csvwriter.writerow(['Average Change: ', average_change])
