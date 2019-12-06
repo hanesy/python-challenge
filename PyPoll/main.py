@@ -119,6 +119,6 @@ with open(output_path, 'a') as txt_file:
     txt_file.write(f"Total Votes: {total_votes}" + '\n')
     for j in range(c_max):
         txt_file.write(f"{candidate_list[j]}: {candidate_percent[j]}% ({candidate_votes[j]})" + '\n')
-    txt_file.write(" -------------------------" + '\n')
+    txt_file.write("--------------------------" + '\n')
     txt_file.write(f" Winner: {winner}")
 
