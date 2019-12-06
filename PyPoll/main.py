@@ -97,12 +97,12 @@ for j in range (c_max):
 
 winner = candidate_list[winner_index]
 
+#print to terminal
 print (f"""
 Election Results
 ----------------------------
 Total Votes: {total_votes}
-----------------------------
-""")
+----------------------------""")
 
 for j in range(c_max):
     print (f"{candidate_list[j]}: {candidate_percent[j]}% ({candidate_votes[j]})")
@@ -111,19 +111,14 @@ print (f"""----------------------------
  Winner {winner}
 ----------------------------""")
 
-results = zip (candidate_list, candidate_percent, candidate_votes)
-
+#print to text file
 output_path = os.path.join("pypoll_output.txt")
-with open(output_path, 'w', newline='') as csvfile:
-    # Initialize csv.writer
-    csvwriter = csv.writer(csvfile, delimiter=',')
-    csvwriter.writerow(["Election Results"])
-    csvwriter.writerow(["-------------------------"])
-    csvwriter.writerow(["Total Votes", total_votes])
-    csvwriter.writerow([" -------------------------"])
-    csvwriter.writerow(["Candidate", "Percent Votes", "Total Votes"])
-    csvwriter.writerow([" -------------------------"])
-    csvwriter.writerows(results)
-    csvwriter.writerow([" -------------------------"])
-    csvwriter.writerow([" Winner", winner])
+with open(output_path, 'a') as txt_file:
+    txt_file.write (f"Election Results"+'\n')
+    txt_file.write(f"-------------------------" + '\n')
+    txt_file.write(f"Total Votes: {total_votes}" + '\n')
+    for j in range(c_max):
+        txt_file.write(f"{candidate_list[j]}: {candidate_percent[j]}% ({candidate_votes[j]})" + '\n')
+    txt_file.write(" -------------------------" + '\n')
+    txt_file.write(f" Winner: {winner}")
 

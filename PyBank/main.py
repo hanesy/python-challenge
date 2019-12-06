@@ -92,6 +92,7 @@ for k in range (l):
 increase_month = months[increase_index]
 decrease_month = months[decrease_index]
 
+#Print to terminal
 print (f"""
 Financial Analysis
 ----------------------------
@@ -102,17 +103,16 @@ Greatest Increase in Profits: {increase_month} (${greatest_increase})
 Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})""")
 
 # * In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+output_path = os.path.join("pybank_output.txt")
+#print to text file
 
 output_path = os.path.join("pybank_output.txt")
-with open(output_path, 'w', newline='') as csvfile:
-    # Initialize csv.writer
-    csvwriter = csv.writer(csvfile, delimiter=',')
+with open(output_path, 'a') as txt_file:
+    txt_file.write (f"Financial Analysis"+'\n')
+    txt_file.write(f"-------------------------" + '\n')
+    txt_file.write(f"Total Months: {num_months}" + '\n')
+    txt_file.write(f"Total: ${net_total}" + '\n')
+    txt_file.write(f"Average Change: ${average_change} " + '\n')
+    txt_file.write(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})" + '\n')
+    txt_file.write(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
 
-    # Write the first row 
-    csvwriter.writerow(['Financial Analysis'])
-    csvwriter.writerow(['----------------------------'])
-    csvwriter.writerow(['Total Months: ', num_months])
-    csvwriter.writerow(['Total: ', net_total])
-    csvwriter.writerow(['Average Change: ', average_change])
-    csvwriter.writerow(['Greatest Increase in Profits: ', increase_month, greatest_increase])
-    csvwriter.writerow(['Greatest Decrease in Profits: ', decrease_month, greatest_decrease])
