@@ -82,7 +82,9 @@ for j in range (c_max):
 candidate_percent = []
 list_max = len (candidate_votes)
 for j in range (list_max):
-    candidate_percent.append(round((int(candidate_votes[j])/total_votes)*100,3))
+    percent =  format(float(((candidate_votes[j])/total_votes)*100), '.3f')
+    candidate_percent.append(percent)
+
 #see % of votes
 #for item in candidate_percent:
 #   print (str(item))
