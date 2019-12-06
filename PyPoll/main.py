@@ -118,7 +118,7 @@ with open(output_path, 'w', newline='') as csvfile:
     # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter=',')
     csvwriter.writerow(["Election Results"])
-    csvwriter.writerow([" -------------------------"])
+    csvwriter.writerow(["-------------------------"])
     csvwriter.writerow(["Total Votes", total_votes])
     csvwriter.writerow([" -------------------------"])
     csvwriter.writerow(["Candidate", "Percent Votes", "Total Votes"])
@@ -126,4 +126,4 @@ with open(output_path, 'w', newline='') as csvfile:
     csvwriter.writerows(results)
     csvwriter.writerow([" -------------------------"])
     csvwriter.writerow([" Winner", winner])
-    
+

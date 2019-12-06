@@ -1,5 +1,5 @@
 Election Results
- -------------------------
+-------------------------
 Total Votes,3521001
  -------------------------
 Candidate,Percent Votes,Total Votes
