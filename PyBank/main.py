@@ -1,67 +1,40 @@
-
-# ## PyBank
-# ![Revenue](Images/revenue-per-lead.png)
-# * In this challenge, you are tasked with creating a Python script for analyzing the financial records of your company. 
-# You will give a set of financial data called [budget_data.csv](PyBank/Resources/budget_data.csv). 
-# The dataset is composed of two columns: `Date` and `Profit/Losses`. 
-# (Thankfully, your company has rather lax standards for accounting so the records are simple.)
-# * Your task is to create a Python script that analyzes the records to calculate each of the following:
-#   * The total number of months included in the dataset
-#   * The net total amount of "Profit/Losses" over the entire period
-#   * The average of the changes in "Profit/Losses" over the entire period
-#   * The greatest increase in profits (date and amount) over the entire period
-#   * The greatest decrease in losses (date and amount) over the entire period
-# * As an example, your analysis should look similar to the one below:
-#   ```text
-#   Financial Analysis
-#   ----------------------------
-#   Total Months: 86
-#   Total: $38382578
-#   Average  Change: $-2315.12
-#   Greatest Increase in Profits: Feb-2012 ($1926159)
-#   Greatest Decrease in Profits: Sep-2013 ($-2196167)
-#   ```
-# * In addition, your final script should both print the analysis to the terminal and export a text file with the results.
-
 # import os and csv modules, set path
 import os
 import csv
 pybankpath = os.path.join('Resources', 'budget_data.csv')
 
-#declare initial variables
+# declare initial variables
 months = []
 profitloss = []
 net_total = 0
+
 # indices in changes[] will be lagging by 1 month from months[] and profitloss[].
 changes = []
+
 total_change = 0
 increase_index = 0
 decrease_index = 0
 greatest_increase = 0
 greatest_decrease = 0
 
-#open and read
+# open and read
 with open (pybankpath, newline='') as analysisfile:
 
     filereader = csv.reader(analysisfile, delimiter = ',')
     file_header = next (filereader)
-    #check if header is loaded
-    #print(f"headers: {file_header}")
     
     for row in filereader:
         months.append(row[0])
         profitloss.append(int(row[1]))
-        #check if rows are loaded
-        #print(row)
 
-#   * The total number of months included in the dataset
+# The total number of months included in the dataset
 num_months = len(months)
 
 
-#   * The net total amount of "Profit/Losses" over the entire period
+# The net total amount of "Profit/Losses" over the entire period
 net_total = sum(profitloss)
 
-#Create a list of monthly changes
+# Create a list of monthly changes
 i = 0
 j = len (profitloss)
 for i in range (j):
@@ -71,14 +44,14 @@ for i in range (j):
         change_amount = current_amount - previous_amount
         changes.append(change_amount)
     
-#   * The average of the changes in "Profit/Losses" over the entire period
+# The average of the changes in "Profit/Losses" over the entire period
 l = len (changes)
 
 total_change = sum (changes)
 average_change= round(total_change / l, 2)
 
-#   * The greatest increase in profits (date and amount) over the entire period
-#   * The greatest decrease in losses (date and amount) over the entire period
+# The greatest increase in profits (date and amount) over the entire period
+# The greatest decrease in losses (date and amount) over the entire period
 k = 0
 for k in range (l):
     if changes[k] > greatest_increase:
@@ -92,7 +65,7 @@ for k in range (l):
 increase_month = months[increase_index]
 decrease_month = months[decrease_index]
 
-#Print to terminal
+# Print to terminal
 print (f"""
 Financial Analysis
 ----------------------------
@@ -102,10 +75,10 @@ Average Change: ${average_change}
 Greatest Increase in Profits: {increase_month} (${greatest_increase})
 Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})""")
 
-# * In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+# In addition, your final script should both print the analysis to the terminal and export a text file with the results.
 output_path = os.path.join("pybank_output.txt")
-#print to text file
 
+# print to text file
 output_path = os.path.join("pybank_output.txt")
 with open(output_path, 'a') as txt_file:
     txt_file.write (f"Financial Analysis"+'\n')
@@ -115,4 +88,3 @@ with open(output_path, 'a') as txt_file:
     txt_file.write(f"Average Change: ${average_change} " + '\n')
     txt_file.write(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})" + '\n')
     txt_file.write(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
-
